@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Wallabhi Saxena</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:#0f0f1a;color:white;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+
+/* Loader */
+#loader{position:fixed;width:100%;height:100%;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;color:#00ffff;font-weight:600;text-align:center;font-size:1.2rem;}
+.loader-msg{margin-top:20px;font-size:1.5rem;animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0.3;}}
+
+/* Particles */
+#particles-js{position:fixed;width:100%;height:100%;z-index:-1;}
+
+/* Navbar */
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.08);backdrop-filter:blur(25px);padding:12px 40px;border-radius:50px;display:flex;gap:30px;z-index:1000;box-shadow:0 0 25px rgba(0,255,255,0.3);}
+nav a{color:white;text-decoration:none;transition:0.3s;font-weight:500;}
+nav a:hover{color:#00ffff;}
+
+/* Sections */
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 20px;text-align:center;opacity:0;transform:translateY(50px);transition:1s;will-change:transform;}
+section.active{opacity:1;transform:translateY(0);}
+
+/* Cover */
+.cover h1{font-size:3rem;z-index:1;text-shadow:0 0 20px rgba(0,255,255,0.5);}
+.gradient{background:linear-gradient(45deg,#00ffff,#ff00ff,#00ff99);-webkit-background-clip:text;color:transparent;animation:move 5s linear infinite;background-size:300%;}
+@keyframes move{0%{background-position:0%}100%{background-position:300%}}
+.cover h2{margin-top:15px;font-size:1.5rem;}
+
+/* About Section */
+.about p{text-shadow:0 0 15px rgba(0,255,255,0.4);max-width:800px;z-index:1;}
+.about-float{width:100%;overflow:hidden;position:relative;margin-top:40px;}
+#aboutTrack{display:flex;gap:25px;transition:transform 0.5s ease;}
+.float-card-about{flex-shrink:0;width:180px;height:180px;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;color:white;box-shadow:0 0 15px rgba(0,255,255,0.3);transition:0.4s;transform-style:preserve-3d;font-size:1rem;}
+.float-card-about:hover{transform:scale(1.1) rotateY(8deg) rotateX(5deg);box-shadow:0 0 35px #00ffff;}
+
+/* Top Projects 3D Carousel */
+.projects-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0;
+  position: relative;
+  perspective: 1200px;
+}
+.projects-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(0,255,255,0.05), rgba(255,0,255,0.05));
+  pointer-events: none;
+  z-index: 0;
+  animation: streakMove 10s linear infinite;
+}
+@keyframes streakMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 200% 0; }
+}
+.projects-loop {
+  display: flex;
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+.top-row { animation: scrollTop 25s linear infinite; }
+.bottom-row { animation: scrollBottom 30s linear infinite; }
+.performer-card {
+  flex: 0 0 220px;
+  background: rgba(0,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+  transition: transform 0.5s, box-shadow 0.5s;
+  transform-style: preserve-3d;
+  position: relative;
+  transform-origin: center;
+}
+.performer-card::before {
+  content: "🏆";
+  position: absolute;
+  top: -20px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  text-shadow: 0 0 15px #ffd700, 0 0 25px #00ffff;
+  animation: bounce 2s infinite;
+}
+.performer-card img {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.stars { color: gold; margin-top: 8px; font-size: 1.1rem; }
+.performer-card:hover {
+  transform: rotateY(15deg) rotateX(8deg) scale(1.15);
+  box-shadow: 0 0 50px #00ffff, 0 0 25px #ff00ff inset;
+}
+.performer-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 0;
+  width: 100%; height: 20px;
+  background: linear-gradient(to bottom, rgba(0,255,255,0.2), transparent);
+  border-radius: 20px;
+  filter: blur(8px);
+  transform: scaleY(-1);
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+@keyframes scrollTop { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes scrollBottom { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.projects-wrapper:hover .projects-loop { animation-play-state: paused; }
+.projects-loop .performer-card:nth-child(odd) { transform: translateZ(20px); }
+.projects-loop .performer-card:nth-child(even) { transform: translateZ(-20px); }
+
+/* Timeline Section */
+#timeline{min-height:80vh;width:90%;max-width:900px;margin:auto;padding:60px 0;opacity:0;transform:translateY(50px);transition:1s;}
+#timeline.active{opacity:1;transform:translateY(0);}
+.timeline-item{position:relative;padding:20px 40px;background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border-radius:20px;margin:20px 0;box-shadow:0 0 20px rgba(0,255,255,0.2);}
+.timeline-item::before{content:"";position:absolute;left:-15px;top:20px;width:10px;height:10px;background:#00ffff;border-radius:50%;}
+.timeline-item h3{font-size:1.2rem;margin-bottom:8px;}
+.timeline-item p{font-size:1rem;color:#ccc;}
+
+/* Meetups */
+#meetups{min-height:80vh;width:90%;max-width:1000px;margin:auto;padding:60px 0;opacity:0;transform:translateY(50px);transition:1s;display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+#meetups.active{opacity:1;transform:translateY(0);}
+.meetup-card{width:220px;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border-radius:20px;padding:20px;text-align:center;color:white;box-shadow:0 0 20px #00ffff;transition:0.4s;animation:float 4s ease-in-out infinite alternate;}
+.meetup-card img{width:100%;height:140px;border-radius:15px;object-fit:cover;margin-bottom:10px;}
+.meetup-card h3{font-size:1.1rem;margin-bottom:5px;}
+@keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-10px);}}
+
+/* Feedback */
+#feedback{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;width:100%;padding:40px 20px;}
+.card{background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border-radius:20px;padding:20px;transition:0.4s;transform-style:preserve-3d;box-shadow:0 0 20px rgba(0,255,255,0.2);}
+.card:hover{transform:rotateY(10deg) rotateX(5deg) scale(1.05);box-shadow:0 0 35px #00ffff;}
+.card img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:15px;}
+
+/* Connect */
+#connect{max-width:600px;margin:auto;opacity:0;transform:translateY(50px);transition:1s;}
+#connect.active{opacity:1;transform:translateY(0);}
+#connect form{display:flex;flex-direction:column;gap:15px;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);padding:30px;border-radius:20px;box-shadow:0 0 25px #00ffff;}
+#connect input,#connect textarea{padding:12px;border:none;border-radius:12px;background:rgba(255,255,255,0.1);color:white;transition:0.3s;}
+#connect input:focus,#connect textarea:focus{outline:2px solid #00ffff;transform:scale(1.02);}
+#connect button{align-self:center;transition:0.4s;}
+#connect button:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff;}
+
+/* Chatbot */
+
+
+/* Cursor */
+/* Cursor */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(45deg,#ff00cc,#00ffff);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3000;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.15s ease-out, background 0.3s;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 15px rgba(0,255,255,0.5), 0 0 25px rgba(255,0,255,0.5);
+}
+
+/* Cursor hover effect on clickable elements */
+a:hover ~ .cursor,
+button:hover ~ .cursor,
+#connect button:hover ~ .cursor {
+  transform: translate(-50%, -50%) scale(1.8);
+  background: linear-gradient(45deg,#00ffff,#ff00ff);
+}
+
+/* Buttons */
+.btn{padding:10px 25px;background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;border-radius:30px;color:white;cursor:pointer;margin-top:20px;transition:0.3s;}
+.btn:hover{transform:scale(1.1);}
+
+/* Responsive */
+@media(max-width:768px){
+.cover h1{font-size:2rem;}
+.cover h2{font-size:1.2rem;}
+.performer-card{flex:0 0 45%;}
+.float-card-about{width:140px;height:140px;font-size:0.9rem;}
+.meetup-card{width:45%;}
+}
+@media(max-width:480px){
+nav{flex-direction:column;padding:10px 20px;}
+.about-float,#aboutTrack,.projects-loop,.meetups{flex-direction:column;align-items:center;}
+.performer-card{flex:0 0 80%;}
+.float-card-about{width:120px;height:120px;font-size:0.8rem;}
+.meetup-card{width:80%;}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div id="loaderText">Welcome to Mentorship by Wallabhi</div>
+  <div id="loaderLogo">INSPIVIA</div>
+
+  <!-- Fun animated loading bar -->
+  <div id="loaderBarContainer">
+    <div id="loaderBar"></div>
+  </div>
+</div>
+
+<!-- Particles -->
+<div id="particles-js"></div>
+<div class="cursor"></div>
+<div class="logo-wrapper">
+  <div class="inspivia-logo" id="logo">
+    <span>I</span>
+    <span>N</span>
+    <span>S</span>
+    <span>P</span>
+    <span>I</span>
+    <span>V</span>
+    <span>I</span>
+    <span>A</span>
+  </div>
+</div>
+<!-- Navbar -->
+<nav class="cyber-navbar">
+  <div class="nav-item"><a href="#home">Home</a></div>
+  <div class="nav-item"><a href="#about">About</a></div>
+  <div class="nav-item"><a href="#timeline">Journey</a></div>
+    <div class="nav-item"><a href="blog.html">Blog</a></div>
+  <div class="nav-item"><a href="#feedback">Feedback</a></div>
+  <div class="nav-item"><a href="#connect">Connect</a></div>
+
+</nav>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="cyberGrid"></canvas>
+<canvas id="magicParticles"></canvas>
+
+
+<!-- Cover -->
+<section id="home" class="cover active">
+<h1>Hello, I'm <span class="gradient">Wallabhi Saxena</span></h1>
+<h2><span id="typing"></span></h2>
+<button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore</button>
+</section>
+<!-- Inspivia Overview with 3D Animated Text & Floating Cards -->
+<section id="inspivia" class="about">
+  <h2 class="inspivia-title">What is Inspivia?</h2>
+  
+  <!-- Floating particle background -->
+  <div id="inspiviaParticles"></div>
+  
+  <!-- Animated text description -->
+  <div class="inspivia-text">
+    <p class="line">Inspivia is your <span class="highlight">mentorship launchpad</span> to practical skills, leadership, and innovation.</p>
+    <p class="line">We <span class="highlight">bridge the gap</span> between classroom learning and real-world tech challenges.</p>
+    <p class="line">Through <span class="highlight">projects, hackathons, AI & software training</span>, we empower aspiring engineers to reach their full potential.</p>
+  </div>
+
+</section>
+  <!-- Floating info cards -->
+  <div class="inspivia-cards">
+    <div class="card">Mentored 50+ Students</div>
+    <div class="card">Online Sessions</div>
+    <div class="card">Offline Meetups</div>
+    <div class="card">200+ Projects</div>
+    <div class="card">Success Stories</div>
+  </div>
+</section>
+<!-- About -->
+<!-- About -->
+<section id="about" class="about">
+  <h2>Step into a journey where learning, creativity, and growth collide.</h2>
+  <p>.</p>
+  <div class="about-float">
+    <div id="aboutTrack"></div>
+  </div>
+</section>
+
+
+<!-- Top Projects 3D Carousel -->
+<section id="topPerformers">
+<h2>🏆 Top Projects</h2>
+<div class="projects-wrapper">
+  <div class="projects-loop top-row" id="projectsTrackTop"></div>
+  <div class="projects-loop bottom-row" id="projectsTrackBottom"></div>
+</div>
+</section>
+
+<!-- Timeline -->
+<section class="journey-section">
+  <h2 class="section-title">Our Journey</h2>
+
+  <!-- Floating Particles Around Timeline -->
+  <div class="timeline-particles">
+    <span style="left:15%; animation-delay:0s;"></span>
+    <span style="left:30%; animation-delay:2s;"></span>
+    <span style="left:55%; animation-delay:4s;"></span>
+    <span style="left:75%; animation-delay:1s;"></span>
+    <span style="left:90%; animation-delay:3s;"></span>
+  </div>
+
+  <div class="animated-timeline">
+
+    <div class="timeline-block left">
+      <div class="timeline-card">
+        <h3>INSPIVIA Launched</h3>
+        <span class="date">01 FEB 2026</span>
+        <p>Introduced elite leadership development program for aspiring tech leaders.</p>
+      </div>
+    </div>
+
+    <div class="timeline-block right">
+      <div class="timeline-card">
+        <h3>50+ Projects Milestone</h3>
+        <span class="date">14 FEB 2026</span>
+        <p>Mentored students completed over 70 industry-grade projects.</p>
+      </div>
+    </div>
+
+    <div class="timeline-block left">
+      <div class="timeline-card">
+        <h3>Top Performers Evaluation</h3>
+        <span class="date">26 FEB 2026</span>
+        <p>Students are evaulated on there projects<p>
+      </div>
+    </div>
+
+    <div class="timeline-block right">
+      <div class="timeline-card">
+        <h3>SUPER 30 TO SUPER 50</h3>
+        <span class="date">27 FEB 2026</span>
+        <p>Expansion of mentorship</p>
+      </div>
+    </div>
+
+    <div class="timeline-block left">
+      <div class="timeline-card">
+        <h3>200+ Projects Achieved</h3>
+        <span class="date">10 MARCH</span>
+        <p>Crossed 200+ successful real-world tech implementations.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Meetups -->
+<section id="meetups">
+<h2>🤝 Meetups & Online Sessions</h2>
+<div class="meetup-card"><img src="photo/meet1.jpeg"><h3> First Offline Meet </h3><p class="meet-date">03 FEB 2026</p></div>
+<div class="meetup-card"><img src="photo/onlinemeet.jpeg"><h3>Google Meet Project check</h3><p class="meet-date">14 FEB 2036</p></div>
+<div class="meetup-card"><img src="photo/meet2.jpeg"><h3>Task Assignment</h3><p class="meet-date">17 FEB 2026</p></div>
+<div class="meetup-card"><img src="photo/meet3.jpeg.png"><h3>Online Checkpoint</h3><p class="meet-date">26 FEB 2026</p></div>
+</section>
+<!-- Brand Logo Top Left -->
+
+
+<canvas id="sparkCanvas"></canvas>
+<!-- Feedback -->
+<!-- ==================== STUDENT FEEDBACK 3D CUBE ==================== -->
+<!-- ==================== STUDENT FEEDBACK 3D SPIRAL ==================== -->
+<section id="feedback">
+  <h2 style="text-align:center;font-size:3rem;margin-bottom:60px;background:linear-gradient(45deg,#00ffff,#ff00ff);-webkit-background-clip:text;color:transparent;">
+    Student Feedback
+  </h2>
+
+  <div class="cube-container">
+    <div class="cube" id="feedbackCube"></div>
+  </div>
+</section>
+
+<div class="deck-container">
+  <!-- Arrow pointing to spiral deck -->
+  <!-- ==================== CLICK ARROW ABOVE SPIRAL WITH PROPER CURVE ==================== -->
+<div class="deck-container">
+  <!-- Arrow pointing to spiral deck -->
+ 
+
+  <!-- Spiral deck -->
+  <div class="card-deck" id="cardDeck"></div>
+</div>
+
+  <!-- Spiral deck -->
+  <div class="card-deck" id="cardDeck"></div>
+</div>
+
+<!-- Fullscreen Feedback Modal -->
+<div id="feedbackModal">
+  <div class="feedbackModalContent">
+    <span class="closeFeedback">&times;</span>
+    <img id="modalImg" src="" alt="Student Photo">
+    <h3 id="modalName"></h3>
+    <div id="modalClass" class="class"></div>
+    <p id="modalFeedback"></p>
+    <div id="modalStars" class="stars"></div>
+  </div>
+</div>
+      
+
+
+<!-- Connect -->
+<!-- Connect Section -->
+<section id="connect">
+  <h2>Connect with Me</h2>
+  
+  <!-- LinkedIn Button -->
+  <button id="linkedinBtn" class="linkedin-btn">🔗 Connect on LinkedIn</button>
+  
+  <!-- Modal Popup -->
+  <div id="linkedinModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img src="C:\Users\WALLABHI SAXENA\Desktop\Mentor\photo\me.jpg" alt="Wallabhi Saxena" class="profile-img">
+      <h3>Wallabhi Saxena</h3>
+      <p>1st UG 2x Patent Holder (HW/SW) | ISRO Alum • Incoming Deloitte Analyst | Founder INSPIVIA | Guest Speaker & Jury | Helping the next generation build the future from scratch.r</p>
+      <a href="https://www.linkedin.com/in/wallabhi-saxena-8a84b4248/" target="_blank" class="visit-btn">Visit LinkedIn Profile</a>
+    </div>
+    
+  </div>
+  
+</section>
+<!-- ==================== CLICK ARROW ABOVE SPIRAL ==================== -->
+ <!-- Footer -->
+<footer id="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <span class="neonWave">INSPIVIA</span>
+    </div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#topPerformers">Top Projects</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#meetups">Meetups</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#connect">Connect</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/wallabhi-saxena-8a84b4248/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="https://twitter.com/" target="_blank">Twitter</a>
+    </div>
+    <p class="footer-copy">© 2026 Inspivia Mentorship. All rights reserved.</p>
+  </div>
+</footer>
+<style>
+/* Connect Section Styles */
+#connect {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 60px 30px;
+  text-align: center;
+  color: white;
+  background: rgba(0,255,255,0.05);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+#connect h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  background: linear-gradient(45deg,#00ffff,#ff00ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 4s linear infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+cube-container {
+  width: 100%;
+  height: 600px;
+  perspective: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  position: relative;
+}
+
+/* Inspivia Section */
+#inspivia {
+  position: relative;
+  padding: 120px 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  perspective: 1200px;
+  z-index: 1;
+}
+
+#inspiviaParticles {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+
+.inspivia-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  background: linear-gradient(45deg,#00ffff,#ff00ff,#00ff99);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: neonGradient 5s linear infinite;
+  transform-style: preserve-3d;
+  text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff, 0 0 40px #00ff99;
+}
+
+/* Animate text lines */
+.inspivia-text .line {
+  opacity: 0;
+  transform: translateY(30px) rotateX(15deg);
+  animation: lineAppear 1s forwards;
+  animation-delay: 0.5s;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  text-shadow: 0 0 8px rgba(0,255,255,0.2);
+}
+
+.inspivia-text .highlight {
+  color: #00ffff;
+  font-weight: 600;
+  text-shadow: 0 0 12px #00ffff;
+}
+
+/* Floating cards */
+.inspivia-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 50px;
+  transform-style: preserve-3d;
+}
+
+.inspivia-cards .card {
+  flex: 0 0 180px;
+  height: 180px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.5s, box-shadow 0.5s;
+  cursor: pointer;
+}
+
+.inspivia-cards .card:hover {
+  transform: rotateY(15deg) rotateX(8deg) scale(1.1);
+  box-shadow: 0 0 40px #00ffff, 0 0 20px #ff00ff inset;
+}
+
+/* Keyframes */
+@keyframes neonGradient {
+  0%{background-position:0%;}
+  50%{background-position:100%;}
+  100%{background-position:0%;}
+}
+
+@keyframes lineAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* ===== Animated Cyberpunk Background ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0f0c29, #090218, #000);
+  overflow-x: hidden;
+  animation: bgMove 10s infinite alternate ease-in-out;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* Moving Light Beams */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, #00f2ff22 50%, transparent 60%);
+  animation: beamMove 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes beamMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+/* ===== Navbar ===== */
+.cyber-navbar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(10, 10, 25, 0.6);
+  border-bottom: 2px solid #00f2ff;
+  box-shadow: 0 0 40px #00f2ff55;
+  position: relative;
+  perspective: 1200px;
+}
+
+/* Hologram Flicker */
+@keyframes hologramFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+.nav-item a {
+  color: #00f2ff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  padding: 12px 22px;
+  display: inline-block;
+  animation: hologramFlicker 3s infinite;
+  transition: 0.3s ease;
+}
+
+/* RGB Glitch */
+.nav-item a:hover {
+  color: white;
+  text-shadow:
+    2px 0 #ff00c8,
+    -2px 0 #00f2ff,
+    0 0 15px #00f2ff,
+    0 0 30px #ff00c8;
+  transform: translateZ(40px);
+}
+
+/* Hologram Glow Border */
+.nav-item a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #00f2ff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00f2ff,
+              0 0 30px #ff00c8 inset;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.nav-item a:hover::before {
+  opacity: 1;
+}
+
+/* Floating subtle depth */
+.nav-item {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: rotateX(10deg) rotateY(10deg);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-4px) }
+}
+/* Floating particle animation */
+@keyframes floatUpInspivia {
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1);}
+}
+
+#inspiviaParticles span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #064646;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: floatUpInspivia 12s linear infinite;
+}
+/* Spiral Cube */
+.cube {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+/* Inspivia Section */
+#inspivia {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  color: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#inspivia h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg,#00ffff,#ff00ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 5s linear infinite;
+}
+
+#inspivia p {
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  color: #ccc;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(0,255,255,0.2);
+}
+
+/* Particle container */
+#inspiviaParticles {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* Floating particles animation */
+@keyframes floatUpInspivia{
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1);}
+}
+#inspiviaParticles span{
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:#00ffff;
+  border-radius:50%;
+  opacity:0.4;
+  animation: floatUpInspivia 12s linear infinite;
+}
+/* Cube Faces */
+.cube .cube-face {
+  position: absolute;
+  width: 260px;
+  height: 180px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Face Image & Text */
+.cube .cube-face img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #00ffff;
+}
+.cube .cube-face h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00ffff;
+}
+.cube .cube-face .class {
+  font-size: 0.8rem;
+  color: #ff00ff;
+  margin-bottom: 6px;
+}
+.cube .cube-face p {
+  font-size: 0.8rem;
+  opacity: 0.95;
+  margin: 0 5px;
+}
+.cube .cube-face .stars {
+  margin-top: 6px;
+  color: gold;
+  font-size: 0.9rem;
+}
+/* Arrow for Spiral Feedback */
+.deck-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  perspective: 1200px;
+}
+
+/* Arrow Text + SVG */
+.clickArrow {
+  position: absolute;
+  top: -70px; /* slightly above the spiral deck */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  font-size: 1.5rem;
+  color: #00ffff;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 
+    0 0 10px #00ffff, 
+    0 0 20px #ff00ff,
+    0 0 30px #00ff99,
+    0 0 40px #ff00ff;
+  animation: bounceArrow 1.5s infinite alternate, glowArrow 2s infinite alternate;
+  pointer-events: none; /* allows clicking cards below */
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bouncing arrow text */
+@keyframes bounceArrow {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Glow effect */
+@keyframes glowArrow {
+  0% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ff99; color: #ff00ff; }
+  100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+}
+
+/* Curved arrow SVG animation */
+.arrowCurve {
+  margin-top: 8px;
+  width: 180px;
+  height: 100px;
+  animation: drawCurve 2s infinite alternate;
+}
+
+/* Draw effect */
+@keyframes drawCurve {
+  0% { stroke-dasharray: 0, 300; }
+  100% { stroke-dasharray: 300, 0; }
+}
+/* Hover */
+.cube .cube-face:hover {
+  transform: translateZ(30px) scale(1.05);
+  box-shadow: 0 25px 45px #00ffff, 0 0 20px #ff00ff inset;
+}
+
+/* Feedback Modal Fullscreen */
+#feedbackModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+}
+.feedbackModalContent {
+  background: rgba(0,255,255,0.05);
+  backdrop-filter: blur(25px);
+  padding: 40px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  color: white;
+  position: relative;
+  animation: modalPop 0.5s ease;
+}
+.feedbackModalContent img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #00ffff;
+}
+.feedbackModalContent h3 { color:#00ffff; margin-bottom:5px; }
+.feedbackModalContent .class { color:#ff00ff; margin-bottom:10px; }
+.feedbackModalContent p { font-size:1rem; margin-bottom:10px; }
+.feedbackModalContent .stars { font-size:1.2rem; color:gold; }
+.feedbackModalContent .closeFeedback {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size:1.8rem;
+  cursor: pointer;
+  color:white;
+}
+.feedbackModalContent .closeFeedback:hover { color:#00ffff; }
+@keyframes modalPop { 0% {transform: scale(0.5); opacity:0;} 100%{transform:scale(1);opacity:1;} }
+
+/* Responsive */
+@media(max-width:768px){
+  .cube { width:220px; height:220px; }
+  .cube .cube-face { width:200px; height:140px; }
+}
+@media(max-width:480px){
+  .cube { width:180px; height:180px; }
+  .cube .cube-face { width:160px; height:120px; }
+}
+
+/* Floating Click Arrow */
+/* Arrow for Spiral Feedback */
+/* Arrow for Spiral Feedback */
+.deck-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  perspective: 1200px;
+}
+
+.clickArrow {
+  position: absolute;
+  top: -60px; /* above spiral deck */
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 1001;
+  font-size: 1.5rem;
+  color: #00ffff;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 
+    0 0 10px #00ffff, 
+    0 0 20px #ff00ff,
+    0 0 30px #00ff99,
+    0 0 40px #ff00ff;
+  animation: bounceArrow 1.5s infinite alternate, glowArrow 2s infinite alternate;
+  pointer-events: none; /* cards remain clickable */
+  cursor: default;
+}
+
+/* Bouncing arrow */
+@keyframes bounceArrow {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Glow effect */
+@keyframes glowArrow {
+  0% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ff99; color: #ff00ff; }
+  100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+}
+
+@keyframes bounceArrow {
+  0% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+  50% { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+}
+
+@keyframes glowArrow {
+  0% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ff99; color: #ff00ff; }
+  100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+}
+/* Bounce animation */
+@keyframes bounceArrow {
+  0% { transform: translate(-50%, 0) rotate(-5deg); }
+  50% { transform: translate(-50%, -10px) rotate(5deg); }
+  100% { transform: translate(-50%, 0) rotate(-5deg); }
+}
+
+/* Glowing effect */
+@keyframes glowArrow {
+  0% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ff99; color: #ff00ff; }
+  100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; color: #00ffff; }
+}
+
+@keyframes bounceArrow {
+  0% { transform: translate(-50%, 0); }
+  100% { transform: translate(-50%, -15px); }
+}
+@keyframes pulseArrow {
+  0% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; }
+  100% { text-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff; }
+}
+
+/* LinkedIn Button */
+.linkedin-btn {
+  padding: 15px 35px;
+  background: #0077b5;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px #0077b5, 0 0 40px #00ffff inset;
+}
+.linkedin-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 0 30px #00ffff, 0 0 50px #0077b5 inset;
+}
+/* ================= ADVANCED ANIMATED TIMELINE ================= */
+
+.journey-section{
+  position:relative;
+  padding:120px 20px;
+  width:100%;
+}
+
+.section-title{
+  text-align:center;
+  font-size:2.2rem;
+  margin-bottom:80px;
+  background:linear-gradient(45deg,#00ffff,#ff00ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* Floating Particles */
+.timeline-particles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+.timeline-particles span{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:#00ffff;
+  border-radius:50%;
+  opacity:0.4;
+  animation:floatUp 12s linear infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1);}
+}
+/* Footer */
+#footer {
+  width: 100%;
+  padding: 50px 20px;
+  background: rgba(15,15,26,0.95);
+  backdrop-filter: blur(20px);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -5px 20px rgba(0,255,255,0.2);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Base navbar styling */
+/* ===== Navbar Container ===== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 18px 0;
+  backdrop-filter: blur(15px);
+  background: rgba(15, 15, 25, 0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  perspective: 1200px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown 1s ease forwards;
+}
+
+/* Entrance Animation */
+@keyframes slideDown {
+  from { transform: translateY(-100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Nav Item 3D Wrapper ===== */
+.nav-item {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.23,1,.32,1);
+}
+
+/* ===== Link Styling ===== */
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  padding: 10px 18px;
+  display: inline-block;
+  transition: color 0.4s ease;
+}
+
+/* ===== 3D Pop Effect ===== */
+.nav-item:hover {
+  transform: translateZ(40px) rotateX(12deg) rotateY(12deg);
+}
+
+/* ===== Neon Gradient Sweep ===== */
+.navbar a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #00f2ff, #ff00c8, #00f2ff);
+  background-size: 300% 300%;
+  border-radius: 8px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.nav-item:hover a::before {
+  opacity: 1;
+  animation: gradientMove 2s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ===== Text Glow ===== */
+.nav-item:hover a {
+  color: white;
+  text-shadow: 0 0 15px #00f2ff,
+               0 0 30px #ff00c8;
+}
+
+/* ===== Animated Underline ===== */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 50%;
+  bottom: -6px;
+  background: #00f2ff;
+  transition: 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover a::after {
+  width: 80%;
+}
+body {
+  background: #0b0b12;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Center Wrapper */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  perspective: 1000px;
+  position: relative;
+}
+
+/* Logo */
+.inspivia-logo {
+  display: flex;
+  gap: 6px;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #e6faff;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.23,1,.32,1);
+}
+
+/* Individual Letters */
+.inspivia-logo span {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
+}
+
+/* Subtle Float Wave */
+.inspivia-logo span:nth-child(odd) {
+  animation: floatUp 3s ease-in-out infinite;
+}
+.inspivia-logo span:nth-child(even) {
+  animation: floatDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes floatDown {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(4px); }
+}
+
+/* Energy Pulse */
+@keyframes energyPulse {
+  0%,100% { text-shadow: 0 0 5px #00f2ff; }
+  50% { text-shadow: 0 0 15px #00f2ff; }
+}
+
+.inspivia-logo {
+  animation: energyPulse 4s infinite ease-in-out;
+}
+
+/* Hover Morph + 3D */
+.logo-wrapper:hover .inspivia-logo {
+  transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+}
+
+/* Letter hover effect */
+.inspivia-logo span:hover {
+  transform: translateY(-8px) scale(1.1);
+  text-shadow: 0 0 20px #00f2ff;
+}
+
+/* Spark Canvas */
+#sparkCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+/* ===== Floating subtle movement ===== */
+.nav-item {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.footer-links a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ff00ff;
+  transform: scale(1.1);
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+}
+
+.footer-social a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #ff00ff;
+  transform: scale(1.1);
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+/* Neon Wave for footer logo */
+.footer-logo .neonWave {
+  display: inline-block;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #00ff99;
+  animation: neonWaveSmooth 6s ease-in-out infinite alternate;
+}
+
+/* Responsive Footer */
+@media(max-width:768px){
+  .footer-links { gap: 15px; }
+  .footer-social { gap: 15px; }
+}
+@media(max-width:480px){
+  .footer-links { flex-direction: column; gap: 10px; }
+  .footer-social { flex-direction: column; gap: 10px; }
+}
+/* Timeline Wrapper */
+.animated-timeline{
+  position:relative;
+  max-width:1000px;
+  margin:auto;
+}
+/* 3D Cube Container */
+.cube-container {
+  width: 100%;
+  height: 550px;
+  perspective: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+/* Cube */
+.cube {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 20s linear infinite;
+}
+
+/* Cube Face */
+.cube .cube-face {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+/* Card Image */
+.cube .cube-face img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 3px solid #00ffff;
+}
+/*meet date font*/
+.meet-date{
+color:white;
+font-weight:600;
+margin-top:5px;
+}
+
+/* Card Text */
+.cube .cube-face h3 { margin-bottom: 8px; font-size: 1rem; }
+.cube .cube-face p { font-size: 0.85rem; text-align: center; opacity: 0.9; }
+.cube .cube-face .stars { margin-top: 10px; color: gold; font-size: 1rem; }
+
+/* Hover & Click Effects */
+.cube .cube-face:hover {
+  transform: translateZ(40px) scale(1.1);
+  box-shadow: 0 40px 60px #00ffff, 0 0 30px #ff00ff inset;
+}
+
+/* Continuous Rotation */
+@keyframes rotateCube {
+  0% { transform: rotateX(-20deg) rotateY(0deg); }
+  100% { transform: rotateX(-20deg) rotateY(360deg); }
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .cube { width: 220px; height: 220px; }
+  .cube .cube-face { width: 200px; height: 200px; }
+}
+@media(max-width:480px){
+  .cube { width: 180px; height: 180px; }
+  .cube .cube-face { width: 160px; height: 160px; }
+}
+
+/* Vertical Line */
+.animated-timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  width:4px;
+  height:0;
+  background:linear-gradient(#00ffff,#ff00ff);
+  transform:translateX(-50%);
+  animation:growLine 3s ease forwards;
+}
+
+@keyframes growLine{
+  to{height:100%;}
+}
+
+/* Blocks */
+.timeline-block{
+  position:relative;
+  width:50%;
+  padding:20px 40px;
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.8s ease;
+}
+
+.timeline-block.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.timeline-block.left{
+  left:0;
+  text-align:right;
+  transform:translateX(-100px);
+}
+
+.timeline-block.right{
+  left:50%;
+  transform:translateX(100px);
+}
+
+.timeline-block.show.left,
+.timeline-block.show.right{
+  transform:translateX(0);
+}
+
+/* Card */
+.timeline-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(0,255,255,0.2);
+  transition:0.4s;
+}
+
+.timeline-card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 40px #00ffff;
+}
+
+.timeline-card .date{
+  display:block;
+  margin:8px 0;
+  color:#00ffff;
+  font-size:0.9rem;
+}
+
+/* Pulse Node */
+.timeline-block::after{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:#00ffff;
+  border-radius:50%;
+  top:30px;
+  right:-9px;
+  animation:pulseNode 2s infinite;
+}
+
+.timeline-block.right::after{
+  left:-9px;
+}
+
+@keyframes pulseNode{
+  0%{box-shadow:0 0 0 0 rgba(0,255,255,0.7);}
+  70%{box-shadow:0 0 0 15px rgba(0,255,255,0);}
+  100%{box-shadow:0 0 0 0 rgba(0,255,255,0);}
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .animated-timeline::before{
+    left:20px;
+  }
+  .timeline-block{
+    width:100%;
+    padding-left:60px;
+    padding-right:25px;
+    text-align:left;
+  }
+  .timeline-block.left,
+  .timeline-block.right{
+    left:0;
+  }
+  .timeline-block::after{
+    left:11px;
+  }
+}
+/* Modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 5000; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+.modal-content {
+  background: rgba(0,255,255,0.05);
+  backdrop-filter: blur(20px);
+  margin: auto;
+  padding: 40px 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+  position: relative;
+  box-shadow: 0 0 30px #00ffff, 0 0 40px #ff00ff inset;
+  animation: slideUp 0.5s ease;
+}
+@keyframes slideUp { from {transform:translateY(50px); opacity:0;} to {transform:translateY(0); opacity:1;} }
+
+.modal-content .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-content .close:hover { color: #00ffff; }
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px #00ffff;
+}
+
+.modal-content h3 { margin-bottom: 10px; font-size: 1.5rem; }
+.modal-content p { margin-bottom: 25px; font-size: 1rem; color: #ccc; }
+
+.visit-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(45deg,#00ffff,#ff00ff);
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.visit-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 0 30px #00ffff, 0 0 20px #ff00ff inset;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  #connect { padding: 50px 20px; }
+  #connect h2 { font-size: 1.7rem; }
+  .linkedin-btn { font-size: 1rem; padding: 12px 25px; }
+  .modal-content { padding: 30px 20px; }
+  .visit-btn { padding: 10px 25px; font-size: 1rem; }
+}
+@media(max-width:480px){
+  #connect { padding: 40px 15px; }
+  #connect h2 { font-size: 1.5rem; }
+  .linkedin-btn { width: 80%; }
+  .modal-content { width: 90%; padding: 25px 15px; }
+}
+
+
+/* Logo Container */
+#brandLogo {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  z-index: 1001;
+}
+
+/* Smooth Neon Wave Text */
+.neonWave {
+  display: inline-block;
+  color: #00ffff;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #ff00ff,
+    0 0 20px #00ff99;
+  animation: neonWaveSmooth 6s ease-in-out infinite alternate;
+}
+
+@keyframes neonWaveSmooth {
+  0% {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #00ff99;
+  }
+  25% {
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ff99, 0 0 20px #00ffff;
+  }
+  50% {
+    color: #00ff99;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  }
+  75% {
+    color: #ff007f;
+    text-shadow: 0 0 5px #ff007f, 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  }
+  100% {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #00ff99;
+  }
+}
+</style>
+
+<script>
+// Get modal elements
+const linkedinBtn = document.getElementById("linkedinBtn");
+const linkedinModal = document.getElementById("linkedinModal");
+const closeBtn = document.querySelector(".modal-content .close");
+
+// Open modal on button click
+linkedinBtn.addEventListener("click", () => {
+  linkedinModal.style.display = "block";
+});
+
+// Close modal on close click
+closeBtn.addEventListener("click", () => {
+  linkedinModal.style.display = "none";
+});
+
+// Close modal if clicked outside content
+window.addEventListener("click", (e) => {
+  if (e.target == linkedinModal) {
+    linkedinModal.style.display = "none";
+  }
+});
+</script>
+
+<!-- Chatbot -->
+
+<script>
+/* Loader */
+window.addEventListener("load",()=>{setTimeout(()=>{document.getElementById("loader").style.display="none";},2000);});
+
+/* Typed animation */
+new Typed('#typing',{strings:["Engineering Mentor","Inspiring 100+ Students","Leadership Builder"],typeSpeed:60,backSpeed:40,loop:true});
+
+/* Particles */
+particlesJS("particles-js",{particles:{number:{value:80},size:{value:3},move:{speed:1},line_linked:{enable:true},color:{value:"#00ffff"}}});
+
+
+/* Timeline Scroll Reveal */
+const timelineBlocks = document.querySelectorAll(".timeline-block");
+
+function revealTimeline(){
+  const trigger = window.innerHeight * 0.85;
+
+  timelineBlocks.forEach(block=>{
+    const top = block.getBoundingClientRect().top;
+    if(top < trigger){
+      block.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealTimeline);
+revealTimeline();
+/* Scroll Reveal */
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{sections.forEach(sec=>{if(sec.getBoundingClientRect().top<window.innerHeight-100)sec.classList.add("active");});});
+
+/* Gradient cursor */
+const cursor = document.querySelector(".cursor");
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  currentX += (mouseX - currentX) * 0.15; // easing
+  currentY += (mouseY - currentY) * 0.15;
+  cursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+/* About Section Carousel */
+const aboutTrack = document.getElementById("aboutTrack");
+const aboutCards = ["Personalized Mentorship","Build Real Projects","Hands-On Hardware","Code with Confidence","Placement Ready","Career Navigation", "Resume Building"];
+aboutCards.forEach(text => {const card=document.createElement("div");card.className="float-card-about";card.innerText=text;aboutTrack.appendChild(card);});
+aboutCards.forEach(text => {const card=document.createElement("div");card.className="float-card-about";card.innerText=text;aboutTrack.appendChild(card);});
+let aboutIndex=0;
+let aboutInterval=setInterval(()=>{scrollAbout(2)},1000);
+function scrollAbout(dir){aboutIndex+=dir;if(aboutIndex<0)aboutIndex=aboutTrack.children.length/2-1;if(aboutIndex>=aboutTrack.children.length/2)aboutIndex=0;const cardWidth=aboutTrack.children[0].offsetWidth+25;aboutTrack.style.transform=`translateX(-${aboutIndex*cardWidth}px)`;}
+aboutTrack.parentElement.addEventListener("mouseenter",()=>clearInterval(aboutInterval));
+aboutTrack.parentElement.addEventListener("mouseleave",()=>aboutInterval=setInterval(()=>scrollAbout(1),2000));
+
+/* Top Projects 3D Carousel */
+const projectsTop = document.getElementById("projectsTrackTop");
+const projectsBottom = document.getElementById("projectsTrackBottom");
+const projects = [
+  {img:"photo/OorjaTiwariProject.jpeg",name:"Oorja Tiwari",type:"Linux Observability Plateform",stars:5},
+  {img:"photo/UnnatiTrivediProject.jpeg",name:"Unnati Trivedi",type:"AI based smart energy management system",stars:5},
+  {img:"photo/TanishkaRastogiProject.jpeg",name:"Tanishka Rastogi",type:"Sms Spam Classifier",stars:5},
+  {img:"photo/MishikaAgarwalProject.jpeg",name:"Mishika Agarwal",type:"NextStep AI:   (Smart Resume Matching & Skill Improvement Platform)",stars:5},
+  {img:"photo/PrachiJainProject.jpeg",name:"Prachi Jain",type:"Finditback:lost-found-plateform(cloud based)",stars:5},
+  {img:"photo/PratikshaKhareProject.jpeg",name:"⁠Pratiksha Khare",type:"",stars:5},
+  {img:"photo/KashishMehrotraProject.jpeg",name:"Kashish Mehrotra",type:"Password Strength Analyser",stars:5},
+  {img:"photo/SaanviTiwariProject.jpeg",name:"Saanvi Tiwari",type:" News Credibility Checker",stars:5},
+  {img:"photo/TanishkaSinghProject.jpeg",name:"Tanishka Singh",type:" Team role allocation system",stars:5},
+  {img:"photo/TanishkaAwastiProject.jpeg",name:"Tanishka Awasthi",type:"Student Stress Prediction System",stars:5},
+  {img:"photo/SakshiChopraProject.jpeg",name:"Sakshi Chopra",type:"Signavix",stars:5},
+  {img:"photo/NityaProject.jpeg",name:"Nitya",type:"LifeStack: Smart Productivity Dashboard",stars:5},
+  {img:"photo/ManyaMittalProject.jpeg",name:"Kratika Srivastava & Manya Mittal ",type:"Collberated Coding Platform",stars:5}
+];
+function createCard(p){const card=document.createElement("div");card.className="performer-card";card.innerHTML=`<img src="${p.img}"><h3>${p.name}</h3><p>${p.type}</p><div class="stars">${'★'.repeat(p.stars)}</div>`;return card;}
+[...projects,...projects].forEach(p => projectsTop.appendChild(createCard(p)));
+[...projects,...projects].reverse().forEach(p => projectsBottom.appendChild(createCard(p)));
+
+/* Feedback cards */
+// Create 35 student cards in a 3D cube spiral
+const cube = document.getElementById("feedbackCube");
+const totalCards = 35;
+const layers = 5; // vertical spiral layers
+const cardsPerLayer = Math.ceil(totalCards/layers);
+const radius = 150;
+const verticalGap = 50;
+const cardData = [
+  {
+    "name":" Unnati Trivedi",
+     "class":"Btech EEE 1st year ",
+    "feedback":"I am above and beyond happy to be a part of community that helps each other to grow together. I like how different students have different ideas for different to solve real life problems and how we all brainstorming to solve these problems with the guidance of our mentor Wallabhi didi but also our other senior who keep track of our progress and to be very honest i didn't think i could make or think something in my first year but I did and I am very grateful for that",
+    "img":"photo/UNNATI TRIVEDI.jpeg"
+  },
+  {
+    "name":"Archi Gupta", 
+    "class":"B.tech EC",
+    "feedback":"The website is very well designed and looks attractive with smooth animations. It clearly explains the purpose of Inspivia and how it helps students learn and grow through projects and mentorship. I really liked the Top Projects section as it motivates students to work on real-world ideas. Overall, it is a great initiative and very helpful for aspiring engineers like us.",
+    "img":"photo/ARCHI GUPTA.jpeg"
+  },
+  {
+    "name":"Tanishka Awasthi",
+    "class":"2nd Year CS",	
+    "feedback":"It was an amazing learning experience creating my portfolio website with your guidance. Your mentorship made complex concepts simple and encouraged me to think creatively. I truly appreciate the time, effort, and continuous support you provided throughout the journey. This experience has strengthened both my skills and confidence. Thank you so much for your your constant support didi.My core interests include coding, learning new technologies, and solving real-life problems through innovative solutions. I enjoy exploring new tools and continuously improving my technical skills.",
+    "img":"photo/TANISHKA AWASTI.jpeg"
+  },
+  {
+    "name":"Pratiksha Khare", 
+    "class":"2nd Year CS",
+    "feedback":"We sincerely thank you for guiding us throughout this project. Your continuous support valuable suggestions and clear explanations helped us understand the concepts in a better way. Whenever we faced difficulties, you patiently listened to our doubts and provided practical solutions.Your motivation encouraged us to improve our work and maintain quality. We truly appreciate the time and effort you invested in mentoring us.",
+    "img":"photo/PRATIKSHA KHARE.jpeg"
+  },
+  {
+   "name":"Prachi jain",
+   "class":"BCA 3rd year",
+   "feedback":"The mentorship program by wallabhi di  has been an exciting and refreshing experience for me. It truly challenges me to think differently and pushes me out of my comfort zone. I can genuinely feel myself growing and learning something new every day. It has sparked a strong sense of motivation in me, and I’m fully committed to giving my best and making the most of this opportunity.",
+   "img":"photo/PRACHI JAIN.jpeg"
+  },
+  {
+   "name":"Shivangi Kumar", 
+   "class":"BTech 1st year CS",
+   "feedback":"The mentorship program is quite fun and new to me!! It jogs my brain in such a way that I can feel the growth in me. I can feel myself growing and learning something new everyday and am ready to give my whole to it!!!",
+   "img":"photo/SHIVANGI KUMAR.jpeg"
+  }, 
+  {
+   "name":"Anshika", 
+   "class":"1st year", 
+   "feedback":"I would like to sincerely appreciate the guidance and supervision provided by Wallabhi Saxena. The supervisor has been extremely supportive, knowledgeable, and approachable throughout the entire period. Their clear instructions, constructive feedback, and encouragement have helped in maintaining discipline, improving work quality, and building confidence .Despite being first-year students, the learning process felt smooth and engaging.",
+   "img":"photo/ANSHIKA.jpeg"
+  },
+  {
+    "name":"Tanishka Singh", 
+    "class":"2nd CS",
+    "feedback":"The Super 30 has been really helpful for me. The deadlines keep me consistent and push me to finish my projects. I also appreciate how Didi and the leads guide us whenever we get stuck. Thank you for putting in so much effort for us!",
+    "img":"photo/TANISHKA SINGH.jpeg"
+  },
+  {
+    "name":"Saanvi Tiwari", 
+    "class":"B.tech 1st year CS-AI",
+    "feedback":"Being a part of Wallabhi Didi, Super 30 batch has been a great learning experience. She puts genuine effort into making our basics clear, whether it’s about patents, projects, or developing the right thought process. Her guidance goes beyond theory and helps us understand how to think, build, and approach problems in a structured way. Really grateful for her constant support and mentorship.",
+    "img":"photo/SAANVI TIWARI.jpeg"
+  },
+  {
+    "name":"Kumari Vedika", 
+    "class":"Btech 1st year EEE", 
+    "feedback":"I have learned a lot through your mentorship. Your insights and real-world experience have helped me develop new skills and approach challenges more strategically. I truly value the time and effort you invest in my growth.",
+    "img":"photo/KUMARI VEDIKA.jpeg"
+  },
+{
+  "name":"Nitya Saluja", 
+  "class":"Btech CSE 3rd year", 
+  "feedback":"This mentorship program has genuinely bridged the gap between juniors and seniors in our college, giving everyone the guidance they actually need along with real senior experience right from the first year.",
+  "img":"photo/NITYA SALUJA.jpeg"
+},
+{
+  "name":"Tanushree Pandey", 
+  "class":"1st year CS-AI",
+  "feedback":"Thank you so much for guiding and supporting us in the beginning of our coding journey. Your support made things easier to understand and motivated us to keep learning. We really appreciate your help and effort.",
+  "img":"photo/Tanushree Pandey.jpeg"
+},
+{
+  "name":"Kumkum Kanwar", 
+  "class":"1st year ECE", 
+  "feedback":"I really appreciate your mentorship. Your guidance has helped me gain clarity and confidence. Thank you for being supportive and patient throughout the process.",
+  "img":"photo/Kumkum Kanwar.jpeg"
+},
+{
+  "name":"Satvi Shukla",
+  "class":"1st year electronics and VLSI Design",
+  "feedback":"Being a part of this group has been a great learning experience for me.I got the opportunity to understand new ideas and see how teamwork helps in completing tasks effectively.This experience is making me explore new skills and improve my confidence. All leaders are very helping and I am very thankful.",
+  "img":"photo/Satvi Sukla.jpeg"
+},
+{ 
+  "name":"Mishika Agarwal", 
+  "class":"BTech 1st yr CS AI",
+  "feedback":"Being a part of NextYou has really helped me to move out of my comfort zone. It encourages me to take the initiative and have faith in my abilities.The mentorship program is not only about skills but also about building confidence and mindset.I am thankful to be a part of such a supportive and growth-oriented community.",
+  "img":"C:\Users\WALLABHI SAXENA\Downloads\photo-20260227T172034Z-1-001\photo\AditiSinghProject.jpeg"
+},
+{
+  "name":"Oorja Tiwari",
+  "class":"BTech 3rd year ECE",
+  "feedback":"This mentorship is honestly much more than what it looks from the outside. While it helps the current juniors at Banasthali directly, it is also rebuilding something that was missing for a long time — genuine junior-senior connection. It’s slowly creating a culture where guidance and support feel normal again. This was a long-term vision taken by Wallabhi Didi, and its impact will go way beyond just one batch. ",
+  "img":"photo/Oorja Tiwari.jpeg"
+},
+{
+  "name":"Tanishka Rastogi", 
+  "class":"B.tech 2nd year CSE",
+  "feedback":"I really liked the project idea. It is clear, practical and well planned.Overall, it’s a very well-structured project and I’m excited to work on it and learn from it.Also, I truly appreciate your guidance. You are a very supportive and knowledgeable mentor, and your way of explaining things makes learning easier and more motivating. Thank you for always guiding and encouraging us.",
+  "img":"photo/Tanishka Rastogi.jpeg"
+},
+{
+  "name":" Apeksha Srivastava", 
+  "class":"BTech in VLSI and design 1st year",
+  "feedback":"I enjoy working with Wallabhi di. She is very nice and helpful. I have learned alot of new things in these past few days and I would like to learn from her more in the future.",
+  "img":"photo/Apeksha Srivastava.jpeg"
+},
+{
+  "name":"Kashish Mehrotra", 
+  "class":"BTech CS 1st yr",
+  "feedback":"It already feels a privilege to be mentored by someone in the very first year of the college , that too by someone whose this enthusiastic and learned , she's truly a motivation to me her achievements and willingness for more and bigger inspires me.",
+  "img":"photo/Kashish Mehrotra.jpeg"
+},
+{
+  "name":"MOLI MAHESHWARI",
+  "class":"BTECH  CS IInd YEAR",
+  "feedback":"Aspiring Data Analyst with a strong foundation in Python, C++, and DBMS,dedicated to solving real-world challenges through demand forecasting and time-series analysis to drive data-backed decision-making.",
+  "img":"photo/MOLI MAHESHWARI.jpeg"
+},
+{
+  "name":"SHAILY GUPTA",
+  "class":"B.Tech 3rd Yr CS",
+  "feedback":"Your guidance and constant support have truly made a big difference in our journey.You don’t just teach, you inspire us to believe in ourselves and push beyond our limits.Thank you for putting so much effort into helping us grow, it genuinely means a lot.",   
+  "img":"photo/SHAILY GUPTA.jpeg"
+},
+{
+  "name":"Garima Agarwal", 
+  "class":"B.Tech 1st year CS AI", 
+  "feedback":"I am really grateful to my senior for guiding me through new tech concepts and tools.I’ve gained practical insights that I wouldn’t have understood on my own. This mentorship is helping me build confidence and grow technically.",
+  "img":"photo/Garima Agarwal.jpeg"
+},
+{
+  "name":"KRATIKA SRIVASTAVA", 
+  "class":"BTech 2nd CS-AI", 
+  "feedback":"The concept of SUPER 30 is really enthusiastic step taken by our mentor (Wallbhi didi),this leads me to increase my skills and has made me punctual and consistent, I really appreciate the effort she and our guide are making for us.",
+  "img":"photo/KRATIKA SRIVASTAVA.jpeg"
+},
+{
+  "name":"Manya Mittal",
+  "class":"B.Tech CS 2 year",
+  "feedback":"The Super 30 program has been incredibly helpful for me. The structured deadlines keep me consistent and motivated to complete my projects on time. I truly appreciate how Didi and the leads are always there to guide me whenever I encounter challenges. Their support and guidance make a big difference in my learning journey. Thank you for putting in so much effort to make this experience valuable and impactful.",
+  "img":"photo/Manya Mittal.jpeg"
+},
+{
+  "name":"Arya Rai",
+  "class":"B.Tech CSE 2nd year",
+  "feedback":"Love the enthusiasm and discipline that's shown by di and followed by everyone in this community. it keeps pushing us to work harder everyday and be the versions of our ourselves.",
+  "img":"photo/Arya Rai.jpeg"
+},
+{
+  "name":"Nidhi Tiwari", 
+  "class":"BTech CS 2nd year",
+  "feedback":"I am grateful that I got an opportunity to work with Wallabhi di. She's doing a great job helping us do what we wanted to and were not able to do in a long time her constant guidance and support has helped me improve my overall skills a lot and I am looking forward to making more amazing projects with her.",
+  "img":"photo/Nidhi Tiwari.jpeg"
+},
+{
+  "name":"Soumya Singh", 
+  "class":"BTech CSE 2nd year", 
+  "feedback":"Didi your mentorship motivates us to stay focused and confident....I truly appreciate the time and effort you invest for our growth....Didi you create a comfortable   environment where we can ask doubts without hesitation...",
+  "img":"photo/Soumya Singh.jpeg"
+},
+{
+  "name":"Sakshi Chopra", 
+  "class":"BTech CSE 3rd year", 
+  "feedback":" This mentorship has helped me maintaining the consistency that I have been lagging since my journey. Regular check-ins , deadlines and guidance has made me come out with my true potential.",
+  "img":"photo/Sakshi Chopra.jpeg"
+},
+{
+  "name":"Anisha", 
+  "class":"BBA 2nd year", 
+  "feedback":"I personally like this mentorship because I am learning a lot with less pressure.",
+  "img":"photo/Anisha.jpg"
+},
+{
+  "name":"Ananya Misra", 
+  "class":"B.Tech CS 2nd year", 
+  "feedback":"I personally like this mentorship because I am learning a lot with less pressureThe mentorship experience is incredibly insightful and motivating. Didi is quite supportive, approachable, and always willing to share practical knowledge and honest feedback. The guidance I received helped me build confidence and gain clarity on my goals.", 
+  "img":"photo/Ananya Misra.jpg"
+},
+{
+  "name":"AASTHA MEHRA", 
+  "class":" B.tech(IT)2nd Year	", 
+  "feedback":"Learning and exploring soo muchh in my field.Veryyy blessed to be guided by u di.Your efforts and continuous guidance means a lott.Thankyouuu soo sooo muchhh!!",
+  "img":"photo/AASTHA MEHRA.jpeg"
+},
+{
+  "name":"Srishti Prajapati 	", 
+  "class":"B.Tech II Year CSE	", 
+  "feedback":" Before the mentorship, I didn't know what to do but after didi told me everything, I got motivated and started building actual projects of domain I am interested in. This mentorship helped me gain confidence and guided me at every step . Thank you so much Wallabhi didi for this opportunity.",
+  "img":"photo/Srishti Prajapati.jpg"
+},
+{
+  "name":"Bhavna Yadav 	", 
+  "class":" B.Tech IT II Year", 
+  "feedback":"It is a great initiative and turned out to be very helpful to me. Now I know to whom I should approach whenever I struggle . ",
+  "img":"photo/Bhavna Yadav.jpg"
+},
+{
+  "name":"Kirti Raj Singh 	", 
+  "class":" B.Tech CS II Year", 
+  "feedback":"She is an exceptional mentor who guides me with clarity and patience.Her passion for innovation truly inspires me to think creatively and work harder.The fact that she has successfully patented her own project motivates me to aim higher in my work. ",
+  "img":"photo/Kirti Raj Singh.jpeg"
+},
+{
+  "name":"Aditi Singh ", 
+  "class":" B.Tech CS II Year", 
+  "feedback":" I am so happy to get guidance from Wallabhi Di as she is helping us grow . It's been pleasure to learn under her and hope to learn a lot more from her.",
+  "img":"photo/Aditi Singh.jpg"
+}
+];
+
+// Create faces in spiral layout
+cardData.forEach((data,i)=>{
+  const face = document.createElement("div");
+  face.className = "cube-face";
+  face.innerHTML = `
+    <img src="${data.img}" alt="${data.name}">
+    <h3>${data.name}</h3>
+    <div class="class">${data.class}</div>
+    <p>${data.feedback}</p>
+    <div class="stars">★★★★★</div>
+  `;
+
+  // Spiral position
+  const layer = Math.floor(i/cardsPerLayer);
+  const posInLayer = i % cardsPerLayer;
+  const angle = (posInLayer/cardsPerLayer)*360 * (Math.PI/180);
+  const y = -layer*verticalGap;
+  const x = radius*Math.sin(angle);
+  const z = radius*Math.cos(angle);
+  face.style.transform = `translateX(${x}px) translateY(${y}px) translateZ(${z}px) rotateY(${posInLayer*(360/cardsPerLayer)}deg)`;
+
+  // Click → full-screen popup
+  face.addEventListener("click",()=>{
+    document.getElementById("modalImg").src = data.img;
+    document.getElementById("modalName").innerText = data.name;
+    document.getElementById("modalClass").innerText = data.class;
+    document.getElementById("modalFeedback").innerText = data.feedback;
+    document.getElementById("modalStars").innerHTML = '★★★★★';
+    document.getElementById("feedbackModal").style.display = "flex";
+  });
+
+  cube.appendChild(face);
+});
+
+// ================= DRAG ROTATION =================
+let isDragging = false;
+let previousX = 0;
+let rotateY = 0;
+let rotateX = -20;
+
+cube.parentElement.addEventListener("mousedown", (e)=>{
+  isDragging = true; previousX = e.clientX;
+});
+cube.parentElement.addEventListener("mouseup", ()=>isDragging=false);
+cube.parentElement.addEventListener("mouseleave", ()=>isDragging=false);
+cube.parentElement.addEventListener("mousemove", (e)=>{
+  if(!isDragging) return;
+  const deltaX = e.clientX - previousX;
+  rotateY += deltaX*0.3;
+  cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  previousX = e.clientX;
+});
+
+// Touch
+cube.parentElement.addEventListener("touchstart",(e)=>{
+  isDragging = true; previousX = e.touches[0].clientX;
+});
+cube.parentElement.addEventListener("touchend",()=>isDragging=false);
+cube.parentElement.addEventListener("touchmove",(e)=>{
+  if(!isDragging) return;
+  const deltaX = e.touches[0].clientX - previousX;
+  rotateY += deltaX*0.3;
+  cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  previousX = e.touches[0].clientX;
+});
+
+// Auto rotate
+let autoRotate = true;
+function rotateLoop(){
+  if(autoRotate) rotateY+=0.2;
+  cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  requestAnimationFrame(rotateLoop);
+}
+rotateLoop();
+cube.addEventListener("mouseenter",()=>autoRotate=false);
+cube.addEventListener("mouseleave",()=>autoRotate=true);
+
+// ================= CLOSE MODAL =================
+document.querySelector(".closeFeedback").addEventListener("click",()=>{
+  document.getElementById("feedbackModal").style.display="none";
+});
+
+
+
+
+// Inspivia Particles
+const inspiviaParticlesContainer = document.getElementById("inspiviaParticles");
+for(let i=0;i<50;i++){
+  const particle = document.createElement("span");
+  particle.style.left = Math.random()*100 + "%";
+  particle.style.animationDelay = Math.random()*6 + "s";
+  particle.style.width = particle.style.height = (Math.random()*4 + 3) + "px";
+  inspiviaParticlesContainer.appendChild(particle);
+}
+
+// Animate lines sequentially
+const lines = document.querySelectorAll("#inspivia .line");
+lines.forEach((line,i)=>{
+  line.style.animationDelay = (i*0.4)+"s";
+});
+/* Parallax scroll */
+window.addEventListener("scroll",()=>{
+let scrollY=window.scrollY;
+document.querySelector(".cover h1").style.transform=`translateY(${scrollY*0.3}px)`;
+document.querySelector(".cover h2").style.transform=`translateY(${scrollY*0.2}px)`;
+document.querySelector(".about p").style.transform=`translateY(${scrollY*0.15}px)`;
+});
+</script>
+<script>
+
+/* 3D Mouse Tilt */
+const logo = document.getElementById("logo");
+
+document.addEventListener("mousemove", (e) => {
+  const x = (window.innerWidth/2 - e.clientX) / 40;
+  const y = (window.innerHeight/2 - e.clientY) / 40;
+
+  logo.style.transform = `
+    rotateY(${x}deg)
+    rotateX(${y}deg)
+  `;
+});
+
+/* Electric Sparks Between Letters */
+const canvas = document.getElementById("sparkCanvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+  canvas.width = logo.offsetWidth;
+  canvas.height = logo.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function drawSpark() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const letters = document.querySelectorAll(".inspivia-logo span");
+
+  for (let i=0; i<letters.length-1; i++) {
+    const rect1 = letters[i].getBoundingClientRect();
+    const rect2 = letters[i+1].getBoundingClientRect();
+
+    const x1 = rect1.left - logo.getBoundingClientRect().left + rect1.width/2;
+    const y1 = rect1.top - logo.getBoundingClientRect().top + rect1.height/2;
+    const x2 = rect2.left - logo.getBoundingClientRect().left + rect2.width/2;
+    const y2 = rect2.top - logo.getBoundingClientRect().top + rect2.height/2;
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = "rgba(0,242,255,0.3)";
+    ctx.lineWidth = 1;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#00f2ff";
+    ctx.stroke();
+  }
+
+  requestAnimationFrame(drawSpark);
+}
+
+drawSpark();
+
+</script>
+</body>
+</html>

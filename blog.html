@@ -1,0 +1,1379 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspivia | Stories That Build Leaders</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#000010;color:white;overflow-x:hidden;transition:0.4s;}
+body.light{background:#f4f4f4;color:#111;}
+
+nav{
+position:fixed;top:0;width:100%;
+padding:20px 60px;
+display:flex;justify-content:space-between;align-items:center;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(20px);
+z-index:1000;
+}
+body.light nav{background:rgba(255,255,255,0.6);}
+nav a{color:white;text-decoration:none;margin-left:30px;font-weight:500;cursor:pointer;}
+body.light nav a{color:#111;}
+nav a:hover{color:#00ffff;}
+
+.toggle{
+cursor:pointer;margin-left:30px;
+padding:6px 14px;border-radius:20px;
+background:rgba(255,255,255,0.1);
+font-size:16px;
+}
+
+.hero{
+height:100vh;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;padding:20px;
+position:relative;overflow:hidden;
+}
+
+.section{
+padding:120px 20px;
+text-align:center;
+}
+
+.footer{padding:40px;text-align:center;background:#111;opacity:0.6;}
+
+.cursor-glow{
+position:fixed;width:200px;height:200px;
+border-radius:50%;pointer-events:none;
+background:radial-gradient(circle,rgba(0,255,255,0.3),transparent 70%);
+transform:translate(-50%,-50%);
+z-index:999;
+}
+
+/* ===== ULTRA CINEMATIC DOCUMENTARY SECTION ===== *//* ===== CINEMATIC LEADER DOCUMENTARY ===== */
+/* ===== INSPIIVIA ORIGIN FILM MODE ===== */
+
+.doc-section{
+min-height:120vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+background:black;
+color:white;
+}
+
+/* Deep Galaxy Layer */
+.doc-section::before{
+content:"";
+position:absolute;
+width:300%;
+height:300%;
+background:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(#00ffff 1px, transparent 1px);
+background-size:60px 60px, 100px 100px;
+opacity:0.06;
+animation:deepGalaxy 200s linear infinite;
+}
+
+@keyframes deepGalaxy{
+from{transform:translateY(0);}
+to{transform:translateY(-1200px);}
+}
+
+/* Soft Cinematic Gradient */
+.doc-section::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 70%);
+}
+
+/* Title */
+.doc-title{
+font-size:1.1rem;
+letter-spacing:6px;
+opacity:0.5;
+margin-bottom:40px;
+}
+
+/* Leader Name - Cinematic Entrance */
+.founder-3d{
+font-size:5rem;
+font-weight:900;
+letter-spacing:12px;
+margin-bottom:30px;
+opacity:0;
+transform:scale(0.8);
+transition:2s ease;
+}
+
+.doc-section.active .founder-3d{
+opacity:1;
+transform:scale(1);
+}
+
+/* Tagline */
+.leader-tagline{
+font-size:1.2rem;
+letter-spacing:4px;
+opacity:0.6;
+margin-bottom:100px;
+}
+
+/* Story Text */
+.doc-text{
+max-width:900px;
+}
+
+.doc-text p{
+font-size:1.8rem;
+margin:35px 0;
+opacity:0;
+transform:translateY(80px);
+transition:1.8s ease;
+}
+
+.doc-section.active .doc-text p{
+opacity:1;
+transform:translateY(0);
+}
+
+.doc-section.active .doc-text p:nth-child(1){transition-delay:0.5s;}
+.doc-section.active .doc-text p:nth-child(2){transition-delay:1.2s;}
+.doc-section.active .doc-text p:nth-child(3){transition-delay:1.9s;}
+.doc-section.active .doc-text p:nth-child(4){transition-delay:2.6s;}
+.doc-section.active .doc-text p:nth-child(5){transition-delay:3.3s;}
+.doc-section.active .doc-text p:nth-child(6){transition-delay:4s;}
+.doc-section.active .doc-text p:nth-child(7){transition-delay:4.7s;}
+
+/* Final Line */
+.origin-final{
+font-size:2.2rem;
+font-weight:700;
+margin-top:100px;
+opacity:0;
+transform:scale(0.9);
+transition:2s ease;
+color:#00ffff;
+}
+
+.doc-section.active .origin-final{
+opacity:1;
+transform:scale(1);
+transition-delay:5.5s;
+}
+
+/* Cinematic reveal line */
+.founder-3d::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-10px;
+width:0%;
+height:2px;
+background:linear-gradient(90deg,#ffffff,#00ffff);
+transition:1.5s ease 0.8s;
+}
+
+.doc-section.active .founder-3d::after{
+width:100%;
+}
+.doc-text p{
+font-size:1.5rem;
+margin:15px 0;
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.doc-section.active .doc-title{
+opacity:1;
+transform:translateY(0);
+}
+
+.doc-section.active .doc-text p{
+opacity:1;
+transform:translateY(0);
+}
+
+.doc-section.active .doc-text p:nth-child(1){transition-delay:0.3s;}
+.doc-section.active .doc-text p:nth-child(2){transition-delay:0.6s;}
+.doc-section.active .doc-text p:nth-child(3){transition-delay:0.9s;}
+.doc-section.active .doc-text p:nth-child(4){transition-delay:1.2s;}
+.doc-section.active .doc-text p:nth-child(5){transition-delay:1.5s;}
+
+/* 3D Leadership Cards */
+.pillars{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+.card3d{
+width:250px;
+height:200px;
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:1.2rem;
+transition:0.5s;
+transform-style:preserve-3d;
+}
+.card3d:hover{
+transform:rotateY(20deg) rotateX(10deg) scale(1.1);
+background:rgba(0,255,255,0.1);
+}
+
+/* Blog Section */
+.blog{
+background:linear-gradient(135deg,#020225,#000010);
+}
+.blog-post{
+max-width:700px;
+margin:40px auto;
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+transition:0.4s;
+}
+.blog-post:hover{
+transform:scale(1.05);
+box-shadow:0 0 40px #00ffff;
+}
+/* Glass Effect Sections */
+.section, .blog-post, .funnel form{
+backdrop-filter: blur(20px);
+background: rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.1);
+}
+/* Deep Galaxy Gradient */
+body{
+background: radial-gradient(circle at center,#000814,#000000 70%);
+overflow-x:hidden;
+}
+
+/* Hologram Founder Text */
+.founder-3d{
+font-size:5rem;
+letter-spacing:5px;
+background: linear-gradient(90deg,#00ffff,#ffffff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:holoText 4s infinite alternate;
+}
+
+@keyframes holoText{
+0%{text-shadow:0 0 20px #00ffff;}
+100%{text-shadow:0 0 60px #00ffff;}
+}
+
+/* Leadership Pillars */
+.card3d{
+transition:all 0.6s ease;
+border:1px solid rgba(0,255,255,0.3);
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(20px);
+}
+
+/* Mentorship Portal Button */
+.funnel button{
+background:linear-gradient(90deg,#001133,#003366);
+color:white;
+border:1px solid #00ffff;
+padding:15px 40px;
+font-size:1.2rem;
+transition:0.4s;
+}
+
+/* Galaxy Depth Fade Sections */
+.section{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+z-index:2;
+}
+/* Hero Glow Animation */
+.hero h1{
+font-size:4rem;
+animation:heroGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes heroGlow{
+from{text-shadow:0 0 10px #00ffff;}
+to{text-shadow:0 0 40px #00ffff;}
+}
+/* Funnel */
+.funnel form{
+max-width:600px;margin:auto;
+display:flex;flex-direction:column;gap:20px;
+}
+.funnel input,.funnel textarea{
+padding:12px;border-radius:8px;border:none;
+}
+.funnel button{
+padding:12px;background:#00ffff;
+border:none;border-radius:8px;
+cursor:pointer;font-weight:600;
+}
+
+canvas{position:absolute;top:0;left:0;z-index:-1;}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow"></div>
+
+<nav>
+<div style="font-weight:800;cursor:pointer;" onclick="scrollToTop()">Inspivia</div>
+<div>
+<a onclick="scrollToTop()">About</a>
+<a href="index.html">Home</a>
+
+</div>
+</nav>
+<section class="hero">
+<canvas id="bg"></canvas>
+<h1>Stories That Build Leaders</h1>
+<p>Real journeys. Real struggle. Real growth.</p>
+</section>
+<!-- ===============================
+     INSPIvia ORIGIN STORY
+     Founder Documentary Section
+=================================-->
+
+<section id="origin-story">
+
+<canvas id="originGalaxy"></canvas>
+
+<div class="origin-content">
+
+<h1 class="origin-title">THE ORIGIN OF INSPI<span>VIA</span></h1>
+
+<h2 class="founder-name">
+  <span class="letter">W</span>
+  <span class="letter">A</span>
+  <span class="letter">L</span>
+  <span class="letter">L</span>
+  <span class="letter">A</span>
+  <span class="letter">B</span>
+  <span class="letter">H</span>
+  <span class="letter">I</span>
+  <span class="space">   </span>
+  <span class="letter">S</span>
+  <span class="letter">A</span>
+  <span class="letter">X</span>
+  <span class="letter">E</span>
+  <span class="letter">N</span>
+  <span class="letter">A</span>
+</h2>
+
+<div class="story-block">
+<p class="story-line">I saw potential everywhere — but discipline nowhere.
+Ambition was loud, but structure was missing.
+</p>
+<p class="story-line">
+So I chose to build what I wished existed..</p>
+<p class="story-line highlight">To build builders.
+Those who act first,
+and leave legacies that outlast recognition.</p>
+</div>
+
+<div class="founder-voice">
+<p id="typewriter"></p>
+</div>
+
+<div class="milestones">
+<div class="mile">F O U N D E R</div>
+<div class="mile">L E A D E R</div>
+<div class="mile">B U I L D E R</div>
+<div class="mile">V I S I O N A R Y</div>
+</div>
+
+</div>
+</section>
+<!-- ===============================
+     LEADERSHIP PILLARS 3D MODE
+=================================-->
+
+<section id="leadership">
+
+<h2 class="pillar-title">LEADERSHIP PILLARS</h2>
+
+<div class="pillar-arena">
+
+<div class="pillar" data-text="">
+<span>VISION</span>
+</div>
+
+<div class="pillar" data-text="">
+<span>BUILDER</span>
+</div>
+
+<div class="pillar" data-text="">
+<span>AUTHORITY  </span>
+</div>
+
+<div class="pillar" data-text="">
+<span>MOVEMENT</span>
+</div>
+
+</div>
+
+</section>
+<!-- ===============================
+     BLOG SECTION – CINEMATIC MODE
+=================================-->
+
+<section id="blog">
+
+<h2 class="blog-title">INSPI<span>VIA</span> BLOG</h2>
+
+<div class="blog-arena">
+
+<div class="blog-card">
+<div class="blog-inner">
+<h3>Vision Before Validation</h3>
+<p>Most people wait to be chosen. Leaders choose themselves.
+Authority is built before applause arrives.
+Vision must exist before confidence does.
+If you need permission, you are negotiating with doubt.
+History rewards the decisive, not the validated.</p>
+
+</div>
+</div>
+
+<div class="blog-card">
+<div class="blog-inner">
+<h3>Builders Don’t Compete — They Construct</h3>
+<p>Competition is loud. Construction is quiet.
+Talkers chase attention; builders design systems.
+Execution compounds while noise fades.
+Comparison distracts; structure advances.
+Those who build don’t compete — they lead.
+
+</div>
+</div>
+
+<div class="blog-card">
+<div class="blog-inner">
+<h3>Create Systems That Outlive You</h3>
+<p>If your work stops when you stop, you built effort — not legacy.
+Leadership is designing what functions without you.
+Hard work fills a day; systems shape a decade.
+Authority scales when dependency reduces.
+Build something that survives your absence.</p>
+
+</div>
+</div>
+
+</div>
+
+</section>
+<style>
+
+/* ===============================
+   BASE SECTION
+=================================*/
+
+#origin-story{
+position:relative;
+min-height:130vh;
+background:black;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+padding:100px 20px;
+}
+
+#originGalaxy{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.origin-content{
+position:relative;
+z-index:2;
+max-width:950px;
+text-align:center;
+}
+/* ===============================
+   LEADERSHIP PILLARS CINEMATIC 3D
+=================================*/
+
+#leadership{
+position:relative;
+min-height:120vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at center,#000814,#000000);
+overflow:hidden;
+perspective:1200px;
+}
+
+.pillar-title{
+font-size:3rem;
+letter-spacing:8px;
+margin-bottom:80px;
+background:linear-gradient(90deg,#00ffff,#ffffff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:titleGlow 4s infinite alternate;
+}
+
+.pillar-arena{
+display:flex;
+gap:60px;
+flex-wrap:wrap;
+justify-content:center;
+transform-style:preserve-3d;
+}
+
+.pillar{
+width:200px;
+height:300px;
+background:linear-gradient(180deg,rgba(0,255,255,0.2),rgba(0,0,0,0.8));
+border:1px solid rgba(0,255,255,0.5);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+transform:rotateX(60deg) translateY(300px);
+opacity:0;
+transition:all 1s ease;
+transform-style:preserve-3d;
+cursor:pointer;
+}
+
+.pillar span{
+font-size:1.2rem;
+letter-spacing:3px;
+transform:rotateX(-60deg);
+color:#00ffff;
+text-align:center;
+}
+
+.pillar::before{
+content:attr(data-text);
+position:absolute;
+bottom:-40px;
+font-size:0.9rem;
+letter-spacing:2px;
+color:#aaa;
+opacity:0;
+transition:0.5s;
+}
+
+.pillar.active{
+transform:rotateX(0deg) translateY(0);
+opacity:1;
+box-shadow:0 0 50px #00ffff;
+}
+
+.pillar.active::before{
+opacity:1;
+}
+
+/* Hover crazy 3D tilt */
+.pillar:hover{
+transform:rotateX(-10deg) rotateY(15deg) scale(1.15);
+box-shadow:0 0 80px #00ffff;
+}
+
+/* Neon border pulse */
+@keyframes pulseBorder{
+0%{box-shadow:0 0 20px #00ffff;}
+100%{box-shadow:0 0 60px #00ffff;}
+}
+
+.pillar.active{
+animation:pulseBorder 3s infinite alternate;
+}
+/* ===============================
+   TITLE
+=================================*/
+
+.origin-title{
+font-size:3.8rem;
+letter-spacing:8px;
+margin-bottom:20px;
+background:linear-gradient(90deg,#00ffff,#ffffff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:titleGlow 4s infinite alternate;
+}
+
+@keyframes titleGlow{
+0%{text-shadow:0 0 20px #00ffff;}
+100%{text-shadow:0 0 70px #00ffff;}
+}
+/* ===============================
+   BLOG SECTION 3D EDITORIAL
+=================================*/
+
+#blog{
+min-height:120vh;
+background:linear-gradient(180deg,#000000,#050d1f);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:120px 20px;
+perspective:1500px;
+}
+
+.blog-title{
+font-size:3rem;
+letter-spacing:8px;
+margin-bottom:80px;
+background:linear-gradient(90deg,#00ffff,#ffffff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:glowBlog 4s infinite alternate;
+}
+
+@keyframes glowBlog{
+0%{text-shadow:0 0 20px #00ffff;}
+100%{text-shadow:0 0 60px #00ffff;}
+}
+
+.blog-arena{
+display:flex;
+gap:50px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.blog-card{
+width:320px;
+height:400px;
+background:transparent;
+transform-style:preserve-3d;
+transition:1s;
+cursor:pointer;
+}
+
+.blog-inner{
+position:relative;
+width:100%;
+height:100%;
+background:rgba(0,255,255,0.05);
+border:1px solid rgba(0,255,255,0.3);
+backdrop-filter:blur(15px);
+padding:30px;
+transform:translateZ(40px);
+transition:1s;
+}
+
+.blog-card:hover{
+transform:rotateY(20deg) rotateX(10deg) scale(1.1);
+}
+
+.blog-card:hover .blog-inner{
+box-shadow:0 0 80px #00ffff;
+}
+
+.blog-inner h3{
+font-size:1.4rem;
+margin-bottom:20px;
+color:#00ffff;
+}
+
+.blog-inner p{
+font-size:1rem;
+color:#ccc;
+line-height:1.6;
+}
+
+.read{
+position:absolute;
+bottom:20px;
+left:30px;
+color:#00ffff;
+font-weight:bold;
+transition:0.5s;
+}
+
+.blog-card:hover .read{
+letter-spacing:2px;
+}
+/* ===============================
+   FOUNDER NAME CINEMATIC
+=================================*/
+
+.founder-name{
+font-size:2.2rem;
+letter-spacing:6px;
+margin-bottom:40px;
+color:#00ffff;
+opacity:0;
+transform:translateY(40px);
+animation:founderReveal 2s ease forwards 1.5s;
+position:relative;
+}
+
+@keyframes founderReveal{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+
+/* ===============================
+   STORY TEXT
+=================================*/
+
+.story-line{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+font-size:1.4rem;
+margin:15px 0;
+}
+
+.story-line.highlight{
+color:#00ffff;
+font-weight:bold;
+}
+
+.story-line.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===============================
+   TYPEWRITER
+=================================*/
+
+.founder-voice{
+margin:40px 0;
+font-size:1.3rem;
+color:#ccc;
+min-height:80px;
+}
+
+/* ===============================
+   MILESTONES – DYNAMIC ENERGY CARDS
+=================================*/
+
+.milestones{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.mile{
+opacity:0;
+transform:scale(0.8) rotateY(20deg);
+padding:20px;
+background:rgba(0,255,255,0.08);
+border:1px solid rgba(0,255,255,0.3);
+backdrop-filter:blur(10px);
+transition:all 1s ease;
+position:relative;
+overflow:hidden;
+}
+
+.mile::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(0,255,255,0.4),transparent);
+transition:0.8s;
+}
+
+.mile.active{
+opacity:1;
+transform:scale(1) rotateY(0);
+}
+
+.mile.active::before{
+left:100%;
+}
+
+.mile:hover{
+box-shadow:0 0 40px #00ffff;
+transform:scale(1.1);
+}
+/* ===============================
+   EXECUTIVE MENTORSHIP SECTION
+=================================*/
+
+#mentorship{
+position:relative;
+min-height:120vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:black;
+padding:120px 20px;
+}
+
+/* Animated Gold Background */
+.mentorship-bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 50% 40%, #1a1a1a, #000);
+z-index:0;
+animation:goldShift 12s infinite alternate;
+}
+
+@keyframes goldShift{
+0%{background:radial-gradient(circle at 50% 40%, #1a1a1a, #000);}
+100%{background:radial-gradient(circle at 70% 60%, #332200, #000);}
+}
+
+.mentorship-container{
+position:relative;
+z-index:2;
+width:100%;
+max-width:600px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,215,0,0.4);
+padding:50px;
+box-shadow:0 0 80px rgba(255,215,0,0.3);
+transform:perspective(1200px) rotateX(8deg);
+transition:1s ease;
+}
+
+.mentorship-container:hover{
+transform:perspective(1200px) rotateX(0deg);
+box-shadow:0 0 120px rgba(255,215,0,0.6);
+}
+
+.mentorship-title{
+font-size:2.5rem;
+letter-spacing:6px;
+text-align:center;
+margin-bottom:20px;
+color:white;
+}
+
+.mentorship-title span{
+color:gold;
+}
+
+.mentorship-sub{
+text-align:center;
+color:#ccc;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+/* Form Inputs */
+
+.input-group{
+position:relative;
+margin-bottom:30px;
+}
+
+.input-group input,
+.input-group textarea{
+width:100%;
+padding:12px;
+background:transparent;
+border:none;
+border-bottom:1px solid rgba(255,215,0,0.4);
+color:white;
+font-size:1rem;
+outline:none;
+}
+
+.input-group label{
+position:absolute;
+left:0;
+top:12px;
+color:#aaa;
+transition:0.3s ease;
+pointer-events:none;
+}
+
+.input-group input:focus + label,
+.input-group textarea:focus + label,
+.input-group input:valid + label,
+.input-group textarea:valid + label{
+top:-12px;
+font-size:0.8rem;
+color:gold;
+}
+
+/* Button */
+
+.apply-btn{
+width:100%;
+padding:15px;
+background:linear-gradient(90deg,#b8860b,#ffd700);
+border:none;
+color:black;
+font-weight:bold;
+letter-spacing:2px;
+cursor:pointer;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.apply-btn:hover{
+box-shadow:0 0 40px gold;
+transform:translateY(-3px);
+}
+
+.form-status{
+margin-top:20px;
+text-align:center;
+color:gold;
+font-weight:bold;
+opacity:0;
+transition:0.5s;
+}
+/* ===============================
+   FLOATING PARTICLE EFFECT
+=================================*/
+
+body{
+background:radial-gradient(circle at center,#000814,#000000 70%);
+}
+
+</style>
+
+<script>
+
+/* ===============================
+   GALAXY BACKGROUND
+=================================*/
+
+const canvas=document.getElementById("originGalaxy");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<400;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5,
+d:Math.random()*0.7
+});
+}
+
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+s.y+=s.d;
+if(s.y>canvas.height){s.y=0;}
+});
+requestAnimationFrame(drawStars);
+}
+drawStars();
+
+/* ===============================
+   SCROLL REVEAL
+=================================*/
+
+const lines=document.querySelectorAll(".story-line");
+const miles=document.querySelectorAll(".mile");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+
+lines.forEach((line,i)=>{
+setTimeout(()=>line.classList.add("active"),i*800);
+});
+
+miles.forEach((mile,i)=>{
+setTimeout(()=>mile.classList.add("active"),2000+i*600);
+});
+
+}
+});
+},{threshold:0.4});
+
+observer.observe(document.querySelector("#origin-story"));
+
+/* ===============================
+   TYPEWRITER EFFECT
+=================================*/
+
+const text="“Inspivia was built to create builders — to empower those who act boldly, lead without waiting, and turn every idea into a signature of impact.";
+let i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typewriter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,35);
+}
+}
+setTimeout(typeWriter,2000);
+
+</script>
+<!-- ULTRA CINEMATIC DOCUMENTARY -->
+
+
+
+
+
+
+
+<!-- ===============================
+     APPLY FOR MENTORSHIP – ELITE MODE
+=================================-->
+
+<section id="mentorship">
+
+<div class="mentorship-bg"></div>
+
+<div class="mentorship-container">
+
+<h2 class="mentorship-title">
+APPLY FOR <span>MENTORSHIP</span>
+</h2>
+
+<p class="mentorship-sub">
+This is not open enrollment.  
+We select individuals ready to build authority, discipline, and execution.
+</p>
+
+<form id="mentorForm" class="mentor-form">
+
+<div class="input-group">
+<input type="text" required>
+<label>Full Name</label>
+</div>
+
+<div class="input-group">
+<input type="email" required>
+<label>Email Address</label>
+</div>
+
+<div class="input-group">
+<input type="text" required>
+<label>Your Current Focus</label>
+</div>
+
+<div class="input-group">
+<textarea required></textarea>
+<label>Why Should You Be Selected?</label>
+</div>
+
+<button type="submit" class="apply-btn">
+Request Consideration
+</button>
+
+<div class="form-status"></div>
+
+</form>
+
+</div>
+
+</section>
+
+<div class="footer">© 2026 Inspivia</div>
+
+<script>
+    
+
+/* ===============================
+   ULTRA CINEMATIC GALAXY ENGINE
+================================ */
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+const renderer = new THREE.WebGLRenderer({
+canvas: document.getElementById("bg"),
+alpha:true,
+antialias:true
+});
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+camera.position.z = 10;
+
+/* ===== Multi Layer Galaxy ===== */
+function createStarLayer(count, spread, size, speed){
+const geo = new THREE.BufferGeometry();
+const pos = new Float32Array(count*3);
+
+for(let i=0;i<count*3;i++){
+pos[i]=(Math.random()-0.5)*spread;
+}
+geo.setAttribute("position",new THREE.BufferAttribute(pos,3));
+
+const mat = new THREE.PointsMaterial({
+color:0xffffff,
+size:size
+});
+const stars = new THREE.Points(geo,mat);
+stars.userData.speed = speed;
+scene.add(stars);
+return stars;
+}
+
+const starsNear = createStarLayer(5000,1500,1.2,0.0005);
+const starsMid  = createStarLayer(8000,2500,0.8,0.0002);
+const starsFar  = createStarLayer(15000,4000,0.5,0.0001);
+
+/* ===== Nebula Glow Sphere ===== */
+const nebulaGeo = new THREE.SphereGeometry(100,64,64);
+const nebulaMat = new THREE.MeshBasicMaterial({
+color:0x001133,
+transparent:true,
+opacity:0.4,
+side:THREE.BackSide
+});
+const nebula = new THREE.Mesh(nebulaGeo,nebulaMat);
+scene.add(nebula);
+
+/* ===== Hologram Founder Face (Abstract AI Projection) ===== */
+const holoGeo = new THREE.IcosahedronGeometry(2.5,4);
+const holoMat = new THREE.MeshStandardMaterial({
+color:0x00ffff,
+wireframe:true,
+emissive:0x00ffff,
+transparent:true,
+opacity:0.6
+});
+const hologram = new THREE.Mesh(holoGeo,holoMat);
+hologram.position.y = 1.5;
+scene.add(hologram);
+
+/* Energy Aura */
+const auraGeo = new THREE.RingGeometry(3,3.5,64);
+const auraMat = new THREE.MeshBasicMaterial({
+color:0x00ffff,
+side:THREE.DoubleSide,
+transparent:true,
+opacity:0.5
+});
+const aura = new THREE.Mesh(auraGeo,auraMat);
+aura.rotation.x = Math.PI/2;
+scene.add(aura);
+
+/* ===== Holographic Floor Grid ===== */
+const grid = new THREE.GridHelper(200,200,0x00ffff,0x002244);
+grid.position.y = -5;
+scene.add(grid);
+
+/* ===== Dynamic Light ===== */
+const light = new THREE.PointLight(0x00ffff,2);
+light.position.set(5,5,5);
+scene.add(light);
+
+/* Mouse reactive light */
+window.addEventListener("mousemove",(e)=>{
+light.position.x = (e.clientX/window.innerWidth -0.5)*20;
+light.position.y = -(e.clientY/window.innerHeight -0.5)*20;
+});
+
+/* ===== Section 3D Worlds Scroll ===== */
+window.addEventListener("scroll",()=>{
+let scroll = window.scrollY;
+
+camera.position.z = 10 + scroll*0.002;
+camera.position.y = scroll*0.001;
+
+hologram.rotation.y += scroll*0.00005;
+nebula.rotation.y += scroll*0.00002;
+});
+
+/* ===== Animate ===== */
+function animate(){
+requestAnimationFrame(animate);
+
+starsNear.rotation.y += starsNear.userData.speed;
+starsMid.rotation.y  += starsMid.userData.speed;
+starsFar.rotation.y  += starsFar.userData.speed;
+
+hologram.rotation.x += 0.003;
+hologram.rotation.y += 0.004;
+
+aura.rotation.z += 0.01;
+
+renderer.render(scene,camera);
+}
+animate();
+
+/* ===============================
+   LEADERSHIP PILLARS ENERGY MODE
+================================ */
+
+
+/* ===============================
+   MENTORSHIP PORTAL GATEWAY
+================================ */
+
+const btn = document.querySelector(".funnel button");
+
+btn.addEventListener("click",(e)=>{
+e.preventDefault();
+
+btn.innerText="Opening Leadership Portal...";
+btn.style.background="linear-gradient(90deg,#00ffff,#ff00ff)";
+btn.style.boxShadow="0 0 80px #00ffff";
+
+setTimeout(()=>{
+window.location.href="#apply";
+},1500);
+});
+
+/* Floating pulse */
+setInterval(()=>{
+btn.style.boxShadow = `0 0 ${30+Math.random()*40}px #00ffff`;
+},800);
+
+</script>
+<script>
+
+/* ===============================
+   PILLAR BUILD-UP SEQUENCE
+=================================*/
+
+const pillars = document.querySelectorAll(".pillar");
+
+const pillarObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+
+pillars.forEach((pillar,i)=>{
+setTimeout(()=>{
+pillar.classList.add("active");
+}, i*700);
+});
+
+}
+});
+},{threshold:0.4});
+
+pillarObserver.observe(document.querySelector("#leadership"));
+
+/* ===============================
+   3D Mouse Reactive Effect
+=================================*/
+
+document.querySelectorAll(".pillar").forEach(pillar=>{
+pillar.addEventListener("mousemove",(e)=>{
+const rect = pillar.getBoundingClientRect();
+const x = e.clientX - rect.left - rect.width/2;
+const y = e.clientY - rect.top - rect.height/2;
+
+pillar.style.transform = `
+rotateX(${ -y/10 }deg)
+rotateY(${ x/10 }deg)
+scale(1.15)
+`;
+});
+
+pillar.addEventListener("mouseleave",()=>{
+pillar.style.transform="rotateX(0deg) rotateY(0deg) scale(1)";
+});
+});
+
+</script>
+<script>
+
+/* Scroll Reveal Blog Cards */
+const blogCards = document.querySelectorAll(".blog-card");
+
+const blogObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+blogCards.forEach((card,i)=>{
+setTimeout(()=>{
+card.style.opacity="1";
+card.style.transform="translateY(0)";
+}, i*400);
+});
+}
+});
+},{threshold:0.3});
+
+blogCards.forEach(card=>{
+card.style.opacity="0";
+card.style.transform="translateY(100px)";
+});
+
+blogObserver.observe(document.querySelector("#blog"));
+
+</script>
+<script>
+
+/* Magnetic Button Effect */
+const applyBtn = document.querySelector(".apply-btn");
+
+applyBtn.addEventListener("mousemove",(e)=>{
+const rect = applyBtn.getBoundingClientRect();
+const x = e.clientX - rect.left - rect.width/2;
+const y = e.clientY - rect.top - rect.height/2;
+
+applyBtn.style.transform = `translate(${x*0.1}px, ${y*0.1}px)`;
+});
+
+applyBtn.addEventListener("mouseleave",()=>{
+applyBtn.style.transform = "translate(0,0)";
+});
+
+/* Fake Success Animation */
+document.getElementById("mentorForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const status = document.querySelector(".form-status");
+
+    // Show status message
+    status.style.opacity = "1";
+    status.innerText = "Application Submitted. Redirecting to WhatsApp...";
+
+    // Animate button
+    const applyBtn = document.querySelector(".apply-btn");
+    applyBtn.innerText = "Redirecting...";
+    applyBtn.style.background = "linear-gradient(90deg,#00ffff,#ff00ff)";
+    applyBtn.style.boxShadow = "0 0 80px #00ffff";
+
+    // Delay a little for cinematic effect, then redirect
+    setTimeout(() => {
+        window.location.href = "https://chat.whatsapp.com/BuSqS2K03xdGV0Z99DV1Cq";
+    }, 1200); // 1.2 seconds delay
+});
+</script>
+</body>
+</html> 
